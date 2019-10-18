@@ -10,7 +10,8 @@
             "Algo_08\\": "08_stack/",
             "Algo_09\\": "09_queue/",
             "Algo_24\\": "24_tree/",
-            "Algo_10\\": "10_heap/"
+            "Algo_10\\": "10_heap/",
+            "Exercise\\": "exercise/"
         }
     }
 }
