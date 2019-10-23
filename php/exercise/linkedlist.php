@@ -25,3 +25,7 @@ $listAlgo = new SingleLinkedListOperate($list);
 $listAlgo->reverse($list);
 $listAlgo->list->printList();
 
+//创建一个带环的链表
+$listAlgo = new SingleLinkedListOperate($list);
+$listAlgo->buildCircle($list);
+var_dump($listAlgo->isCircle($list));
