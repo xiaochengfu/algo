@@ -47,6 +47,46 @@ class SingleLinkedList
         return $newNode;
     }
 
+    /**
+     * Description:  从第key个节点后，插入新节点
+     * Author: hp <xcf-hp@foxmail.com>
+     * Updater:
+     * @param $key
+     * @param $data
+     */
+    public function insertNodeInKeyAfter($key,$data){
+        // 1->2->3 3.5 ->4->null
+        $currentNode = $this->head->next;
+        for($i=0;$i<$key;$i++){
+           $currentNode =  $currentNode->next;
+        }
+        $newNode = new SingleLinkedNode();
+
+        $newNode->data = $data;
+        $newNode->next = $currentNode->next;
+        $currentNode->next = $newNode;
+        $this->length++;
+    }
+
+    /**
+     * Description:  删除第key个节点
+     * Author: hp <xcf-hp@foxmail.com>
+     * Updater:
+     * @param $key
+     */
+    public function deleteNodeInKeyAfter($key){
+        // 1->2->3
+        $loopNode = $this->head->next;
+        for($i=0;$i<$key;$i++){
+            $loopNode = $loopNode->next;
+        }
+        //       k
+        // 1->2->3 3.5 4->5
+        $q = $loopNode->next->next;
+        $loopNode->next = $q;
+        $this->length--;
+    }
+
     public function printList(){
         if($this->head->next == null){
             return false;
