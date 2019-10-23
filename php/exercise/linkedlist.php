@@ -8,6 +8,7 @@
 
 require_once '../vendor/autoload.php';
 use Exercise\linked_list\SingleLinkedList;
+use Exercise\linked_list\SingleLinkedListOperate;
 
 $list = new SingleLinkedList();
 $list->insert(1);
@@ -18,4 +19,9 @@ $list->insert(5);
 $list->insert(6);
 $list->insert(7);
 $list->printList();
+
+//单链表反转
+$listAlgo = new SingleLinkedListOperate($list);
+$listAlgo->reverse($list);
+$listAlgo->list->printList();
 
