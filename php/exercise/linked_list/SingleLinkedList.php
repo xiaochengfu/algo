@@ -87,6 +87,40 @@ class SingleLinkedList
         $this->length--;
     }
 
+    public function deleteLastN($n){
+        /**
+         *  利用2个指针，快速查找第n个节点
+         *  假设 n=2,让第一个指针p指向第2（n)个节点
+         *           p
+         *  head->1->2->3->4->5->6->7->null
+         *  q
+         *  让第二个指针q指向头结点
+         *  开始循环，直到p指针指向null
+         *                          p
+         *  head->1->2->3->4->5->6->7->null
+         *                    q
+         */
+        $p = $this->head;
+        $q = $this->head;
+        //先让p指向第n个节点
+        $i = 0;
+        while ($p != null && $i<$n){
+            $p = $p->next;
+            $i++;
+        }
+        if($p == null){
+            return true;
+        }
+
+        //让p指向最后的节点
+        while ($p->next != null){
+            $p = $p->next;
+            $q = $q->next;
+        }
+
+        $q->next = $q->next->next;
+    }
+
     public function printList(){
         if($this->head->next == null){
             return false;

@@ -47,3 +47,7 @@ $list->printList();
 $list->deleteNodeInKeyAfter(2);
 $list->printList();
 
+//删除倒数第n个节点
+$list->deleteLastN(2);
+$list->printList();
+
