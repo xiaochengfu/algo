@@ -99,6 +99,10 @@ class SingleLinkedList
          *                          p
          *  head->1->2->3->4->5->6->7->null
          *                    q
+         * 极端情况，当删除倒数第0个时
+         *                          p
+         *  head->1->2->3->4->5->6->7->null
+         *                      pre q
          */
         $p = $this->head;
         $q = $this->head;
@@ -113,12 +117,19 @@ class SingleLinkedList
         }
 
         //让p指向最后的节点
+        $pre = null;
         while ($p->next != null){
+            $pre = $q;
             $p = $p->next;
             $q = $q->next;
         }
+        if($q->next == null){
+            $pre->next = null;
+        }else{
+            $q->next = $q->next->next;
+        }
 
-        $q->next = $q->next->next;
+
     }
 
     public function printList(){
