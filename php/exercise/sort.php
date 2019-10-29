@@ -91,7 +91,7 @@ $array = [8,5,1,2,4,10,6,7,3,9];
 print_r(implode('->',$array));echo PHP_EOL;
 insertSort($array);
 print_r(implode('->',$array));
-echo '-----------------快速排序-----------------'.PHP_EOL;
+echo '-----------------选择排序-----------------'.PHP_EOL;
 //$array = range(1,10);
 //shuffle($array);
 $array = [8,5,1,2,4,10,6,7,3,9];
