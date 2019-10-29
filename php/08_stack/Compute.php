@@ -7,7 +7,6 @@ function expression($str)
 {
     $str = str_replace(' ','',$str);
     $arr = preg_split('/([\+\-\*\/\(\)])/', $str, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
-
     $numStack = [];  // 存放数字
     $operStack = []; // 存放运算符
     $operStack[] = NULL;
@@ -17,15 +16,18 @@ function expression($str)
             array_push($numStack, $arr[$i]);
             continue;
         }
+//        var_dump($numStack);
         switch ($arr[$i]){
             case '+':
             case '-':
                 $arrLen = count($operStack);
                 while ($operStack[$arrLen-1] === '*' || $operStack[$arrLen-1] === '/' || $operStack[$arrLen-1] === '-'){
+                    echo 111;
                     compute($numStack, $operStack);
                     $arrLen--;
                 }
                 array_push($operStack, $arr[$i]);
+                var_dump($operStack);exit;
                 break;
             case '*':
                 $arrLen = count($operStack);
@@ -53,6 +55,7 @@ function expression($str)
                 break;
         }
     }
+    exit;
     
     $arrLen = count($operStack);
     while ($operStack[$arrLen-1] !== NULL){  
