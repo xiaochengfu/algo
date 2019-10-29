@@ -56,7 +56,25 @@ function insertSort(array &$array){
                 break;//如果与前面的比较，后面的大，则跳出循环
             }
         }
-        $array[$f+1] = $value;
+        $array[$f+1] = $value;//插入数据
+    }
+}
+
+function selectSort(array &$array){
+    $num = count($array);
+    if($num <= 1) return;
+    for($i=0;$i<$num-1;$i++){
+        //最重要的是找到最小的值
+        $min = $i;//假设最小的值的位置
+        for($j = $i+1;$j<$num;$j++){//循环比较后面的值
+            if($array[$min]>$array[$j]){
+                $min = $j;
+            }
+        }
+        //更换位置
+        $temp = $array[$min];
+        $array[$min] = $array[$i];
+        $array[$i] = $temp;
     }
 }
 
@@ -72,4 +90,11 @@ echo '-----------------插入排序-----------------'.PHP_EOL;
 $array = [8,5,1,2,4,10,6,7,3,9];
 print_r(implode('->',$array));echo PHP_EOL;
 insertSort($array);
+print_r(implode('->',$array));
+echo '-----------------快速排序-----------------'.PHP_EOL;
+//$array = range(1,10);
+//shuffle($array);
+$array = [8,5,1,2,4,10,6,7,3,9];
+print_r(implode('->',$array));echo PHP_EOL;
+selectSort($array);
 print_r(implode('->',$array));
